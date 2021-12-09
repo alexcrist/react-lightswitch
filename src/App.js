@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+
+  console.log('App rendered.');
+
+  // Define a state variable for the label text
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Define a function that runs when the button is clicked
+  function onButtonClick() {
+    console.log('button was clicked');
+    setIsDarkMode(!isDarkMode);
+  }
+
+  // Return HTML to be rendered
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <div className='label'>
+        {isDarkMode ? 'Off' : 'On'}
+      </div>
+      <button onClick={onButtonClick} className='lightswitch'>
+        Lightswitch
+      </button>
     </div>
   );
 }
